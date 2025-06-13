@@ -1,0 +1,29 @@
+name: Build Debian ISO with GUI
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt update
+          sudo apt install -y live-build wget curl
+
+      - name: Build ISO
+        run: |
+          sudo lb clean
+          sudo lb config
+          sudo lb build
+
+      - name: Upload ISO
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-custom-iso
+          path: ./live-image-amd64.hybrid.iso

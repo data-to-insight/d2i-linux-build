@@ -4,3 +4,4 @@ libreoffice
 curl
 wget
 git
+debian-archive-keyring

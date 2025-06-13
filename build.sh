@@ -7,15 +7,19 @@ sudo apt install -y live-build wget curl
 sudo lb clean --purge
 sudo rm -rf config auto
 
-sudo lb config \
+sudo /usr/bin/lb clean --purge
+sudo /usr/bin/lb config \
   --distribution bookworm \
   --architectures amd64 \
   --linux-flavours amd64 \
-  --debian-installer live \
   --mirror-bootstrap http://deb.debian.org/debian/ \
-  --mirror-chroot http://deb.debian.org/debian/ \
   --mirror-chroot-security http://security.debian.org/ \
-  --archive-areas "main"
+  --debian-installer live \
+  --archive-areas "main" \
+  --bootstrap include=debian-archive-keyring
+sudo /usr/bin/lb build
+
+
 
 mkdir -p config/package-lists config/hooks
 

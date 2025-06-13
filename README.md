@@ -67,7 +67,7 @@ Live sessions will auto-login. If installed, users will create their own login c
 
 ### Download
 
-> The ISO can be downloaded [GitHub Releases](https://github.com/your-org/your-repo/releases).
+[ISO can be downloaded](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
 
 
 ## Dev notes
@@ -75,5 +75,7 @@ Live sessions will auto-login. If installed, users will create their own login c
 cd /tmp/d2ibuild
 sudo ./build.sh
 
-
-
+**Need to biuld into /tmp**
+cd /workspaces/d2i_linux_build
+chmod +x build_in_tmp.sh
+./build_in_tmp.sh

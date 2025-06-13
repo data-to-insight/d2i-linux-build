@@ -1,0 +1,26 @@
+name: Build ISO
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Build ISO using Docker
+      run: |
+        docker build -t d2i-iso-builder .
+        mkdir -p output
+        docker run --rm -v ${{ github.workspace }}/output:/build/output d2i-iso-builder
+
+    - name: Upload ISO to GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: output/*.iso
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,47 +1,34 @@
 name: Build and Release ISO
 
 on:
-  workflow_dispatch:
   push:
-    paths:
-      - build.sh
-      - .github/workflows/build-iso.yml
-      - config/**
+    branches: [main]
+
+permissions:
+  contents: write  # Required for release upload
 
 jobs:
-  build-iso:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Set up build environment
         run: |
-          sudo apt-get update
-          sudo apt-get install -y live-build xorriso grub-pc-bin grub-efi-bin mtools
+          sudo apt update
+          sudo apt install -y live-build xorriso
 
-      - name: Make build script executable
-        run: chmod +x build.sh
+      - name: Run ISO build script
+        run: |
+          chmod +x build.sh
+          ./build.sh
 
-      - name: Build ISO
-        run: ./build.sh
-
-      - name: Upload ISO as Artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload ISO to GitHub Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: d2i-custom-iso
-          path: output/d2i-custom.iso
-
-      - name: Install GitHub CLI
-        uses: cli/cli-action@v2
-
-      - name: Create Release and Upload ISO
+          tag_name: "v1.0.${{ github.run_number }}"
+          name: "d2i-custom ISO build ${{ github.run_number }}"
+          files: output/d2i-custom.iso
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          TAG="iso-latest"
-          gh release delete $TAG -y || true
-          gh release create $TAG output/d2i-custom.iso \
-            --title "Latest ISO Build" \
-            --notes "Automated build of D2I Linux distro"

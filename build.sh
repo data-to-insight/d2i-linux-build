@@ -1,10 +1,15 @@
 #!/bin/bash
 set -e
 
+# ensure working in project root
+cd "$(dirname "$0")/.."
+
 mkdir -p output
 
+# clean any previous build safely
 lb clean --purge || true
 
+# configure build
 lb config \
   --distribution noble \
   --architectures amd64 \
@@ -15,8 +20,12 @@ lb config \
   --mirror-chroot-security http://security.ubuntu.com/ubuntu/ \
   --linux-flavours amd64
 
-mkdir -p config/package-lists config/hooks config/includes.chroot/etc/xdg/xfce4/xfconf/xfce-perchannel-xml
+# package lists and hooks
+mkdir -p config/package-lists \
+         config/hooks \
+         config/includes.chroot/etc/xdg/xfce4/xfconf/xfce-perchannel-xml
 
+# main packages
 cat <<EOF > config/package-lists/d2i.list.chroot
 task-xfce-desktop
 firefox
@@ -26,7 +35,8 @@ wget
 git
 EOF
 
-cat <<EOF > config/hooks/0100-wallpaper.chroot
+# wallpaper hook
+cat <<'EOF' > config/hooks/0100-wallpaper.chroot
 #!/bin/bash
 set -e
 mkdir -p /usr/share/backgrounds
@@ -35,6 +45,8 @@ EOF
 
 chmod +x config/hooks/0100-wallpaper.chroot
 
+# build the ISO
 lb build
 
+# move ISO to output
 mv live-image-amd64.hybrid.iso output/d2i-custom.iso

@@ -1,17 +1,18 @@
 #!/bin/bash
-# chmod +x build_in_tmp.sh
-
 set -e
 
-echo "Copy project to /tmp/d2ibuild..."
+echo "Preparing clean temp build dir..."
 sudo rm -rf /tmp/d2ibuild
 mkdir -p /tmp/d2ibuild
-rsync -a --exclude='*.iso' . /tmp/d2ibuild/
 
-echo "Change to /tmp/d2ibuild"
+echo "Copying current repo (excluding ISO files)..."
+rsync -a --exclude='*.iso' --exclude='cache' --exclude='chroot' --exclude='.stage' . /tmp/d2ibuild/
+
+echo "Switch to /tmp/d2ibuild"
 cd /tmp/d2ibuild
 
-echo "Run build script"
-sudo ./build.sh
+echo "Wiping build leftovers..."
+sudo rm -rf cache/ chroot/ config/ auto/ .stage build/ live-build*
 
-echo "Build complete: ISO located at /tmp/d2ibuild/live-image-amd64.hybrid.iso"
+echo "Running build.sh from temp location"
+./build.sh

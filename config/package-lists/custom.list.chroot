@@ -1,7 +1,7 @@
 task-xfce-desktop
-firefox-esr
+firefox
 libreoffice
 curl
 wget
 git
-debian-archive-keyring
+thunderbird

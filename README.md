@@ -2,23 +2,39 @@
 
 Custom Ubuntu-based ISO for internal D2I tooling and testing. This is an early attempt to streamline deployment and testing of a desktop environment preconfigured for common D2I workflows.
 
-repo contains:
+## What Is This?
 
-- ISO build scripts using `live-build`
-- Dockerfile for building in a container
-- GitHub Actions workflow for automated ISO release (planned)
-- Preinstalled tooling and light branding
+This project builds a custom Ubuntu-based Linux operating system designed for internal use at Data To Insight (D2I). Lightweight desktop env incl' key apps(at least our initial|core ones) and a d2i starting point out of the box.
 
----
+ISO file can:
 
-## Summary
+- Boot as a live CD or usb (try without installing)
+- Install to physical or virtual machine
+- Give us consistent, ready-to-go Linux env for d2i
 
-- **Base Distribution**: Ubuntu 24.04 LTS (Noble)
-- **Desktop**: XFCE (lightweight, stable)
-- **Architecture**: amd64
-- **Live Mode**: XFCE GUI with auto-login (`d2iuser`)
-- **Installer**: Available during live session
-- **Release Status**: Alpha (non-production)
+
+## How to
+
+1. Download latest ver at:  
+   [Latest Release](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
+
+2. Write ISO file to usb stick using a tool like [Rufus](https://rufus.ie), [Etcher](https://www.balena.io/etcher/) or `dd` command
+
+3. Boot PC or virtual machine from usb or ISO file
+
+4. Use in live Mode (no changes saved) or install to disk for full access
+
+
+## What It Includes
+
+- Ubuntu 24.04 LTS (Noble Numbat) base
+- XFCE desktop environment (fast/ minimal 
+- **Live Mode**: XFCE GUI with auto-login (`d2iuser`) on initial use)
+- D2I custom wallpaper (placeholder only atm)
+- Slack and Thunderbird auto-start on boot
+- Firefox homepage set to https://www.datatoinsight.org
+- Anaconda, Jupyter, LibreOffice + common tools preinstalled
+
 
 ---
 
@@ -44,13 +60,13 @@ repo contains:
 | **Welcome Message**        | First login popup: “Your new D2I build has installed.”                      |
 | **Autostart Apps**         | Slack and Thunderbird autostart on live boot or first login                 |
 | **Firefox Homepage**       | Set to https://www.datatoinsight.org                                       |
-| **Live Session Autologin** | User `d2iuser` is logged in automatically in the live session                |
+| **Live Session Autologin** | User `d2iuser` is logged in automatically in live session                |
 
 ---
 
 ## First Boot
 
-When run via VirtualBox, QEMU, or direct install, the following should be visible:
+When run via VirtualBox, QEMU, or direct install, you should see:
 
 - XFCE GUI with D2I wallpaper
 - App menu incl Firefox, LibreOffice, Slack, Thunderbird
@@ -65,7 +81,7 @@ When run via VirtualBox, QEMU, or direct install, the following should be visibl
 
 ### Final Working Method (Dockerised)
 
-Succeeded by **moving the `lb build` command outside the Docker image build phase** and instead running it at container runtime:
+Succeeded by **moving `lb build` command outside Docker image build phase** and instead running it at container runtime:
 
 ```bash
 docker build -t d2i-live .
@@ -74,9 +90,9 @@ docker run --rm -v "$PWD/output:/build/output" d2i-live
 
 ---
 
-## PRev attempts (and Why Failed)
+## Prev attempts - i.e. some background on our approach to this build and why (and Why Failed)
 
-This avoids the mounting of privileged paths like `/proc` and `/dev/pts` inside the Dockerfile, which fails in unprivileged environments like GitHub Codespaces and GitPod.
+This avoids mounting of privileged paths like `/proc` and `/dev/pts` inside Dockerfile, which seemed to fail repeatedly in (any)unprivileged environments like GitHub Codespaces and GitPod (admitedly on this one i did't use the paid account).
 
 | Attempt                         | Description                                 | Status | Problem                                                                 |
 |---------------------------------|---------------------------------------------|--------|-------------------------------------------------------------------------|
@@ -99,10 +115,14 @@ docker build -t d2i-live .
 docker run --rm -v "$PWD/output:/build/output" d2i-live
 
 
+## Download for use our latest iso release
+
+[Latest Release](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
+
 
 ### Output
 
-The ISO will appear in:
+ISO will appear in:
 
 ./output/d2i-custom.iso
 
@@ -131,7 +151,7 @@ d2i_linux_build/
 |--------------------|---------------------------------------------------------|
 | package-lists/     | Declare core packages installed via apt           |
 | includes.chroot/   | Add files into ISO directly (e.g. wallpapers, configs) |
-| hooks/             | Custom shell scripts run during the chroot phase   |
+| hooks/             | Custom shell scripts run during chroot phase   |
 
 
 ### Releasing new iso ver

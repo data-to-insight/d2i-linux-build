@@ -28,14 +28,17 @@ wget
 git
 EOF
 
+mkdir -p config/hooks
+
 cat <<EOF > config/hooks/0100-wallpaper.binary
 #!/bin/bash
 set -e
 mkdir -p /usr/share/backgrounds
-cp /build/assets/d2i-wallpaper.png /usr/share/backgrounds/d2i-wallpaper.png
+cp /build/assets/d2i-wallpaper.png /usr/share/backgrounds/d2i-wallpaper.png || echo "Wallpaper not found, skipping"
 EOF
 
-chmod +x config/hooks/0100-wallpaper.chroot
+chmod +x config/hooks/0100-wallpaper.binary
+
 
 lb build
 

@@ -1,44 +1,40 @@
 # D2I Linux Alpha Build (v0.1.0)
 
-Custom Ubuntu-based ISO for internal D2I tooling and testing. This is an early attempt to streamline deployment and testing of a desktop environment preconfigured for common D2I workflows. This is now a working build from release v0.1.0, see link below for latest release. 
-
-## What Is This?
-
-This project builds a custom Ubuntu-based Linux operating system designed for internal use at Data To Insight (D2I). Lightweight desktop env incl' key apps(at least our initial|core ones) and a d2i starting point out of the box.
-
-ISO file can:
-
-- Boot as a live CD or usb (try without installing)
-- Install to physical or virtual machine
-- Give us consistent, ready-to-go Linux env for d2i
+Custom Ubuntu-based ISO for internal D2I tooling and testing. This is an early attempt to build, streamline deployment and test a Linux desktop environment preconfigured with key apps for our D2I workflows straight out of the box. 
+**This is now a working build from release v0.1.0**, see link below for latest release. 
 
 
-## How to
 
-1. Download latest ver at:  
-   [Latest Release](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
+## Quick how to
 
+1. Download latest release/ver (see below for intructions about *Downloading ISO*)
 2. Write ISO file to usb stick using a tool like [Rufus](https://rufus.ie), [Etcher](https://www.balena.io/etcher/) or `dd` command
-
 3. Boot PC or virtual machine from usb or ISO file
-
 4. Use in live Mode (no changes saved) or install to disk for full access
 
-### Downloading the ISO
+### Downloading ISO
 
-latest D2I Linux ISO is at:
-
-[Download D2I Linux v0.1.0](https://github.com/data-to-insight/d2i_linux_build/releases/tag/v0.1.0)
-
-Note:
-ISO file located **inside source archive** (either ZIP or TAR.GZ) and is not shown as separate file.
+latest version is at: [Download D2I Linux v0.1.0](https://github.com/data-to-insight/d2i_linux_build/releases/tag/v0.1.0)
+*Note: ISO file located **inside archive** (either ZIP or TAR.GZ) and is not shown as separate download file.*
 
 To extract ISO:
 
-1. Download the ZIP or TAR.GZ file from release
+1. Download the ZIP or TAR.GZ file from release (Git doesnt allow direct upload of `.iso` files, so ISO is bundled inside `.zip`|`.tar.gz` archive for compatibility)
 2. Extract it on your pc
 3. Locate ISO at `output/d2i-custom.iso` inside extracted folder
 4. You can boot this ISO in VirtualBox, write it to USB with BalenaEtcher, or install it on pc
+
+### What's an ISO?
+
+An ISO file is a single archive that contains the entire contents of a disc or bootable installation image. In this case, it includes the full D2I Linux operating system – preconfigured with desktop, tools(increasing as we decide on what our core set is), and settings.
+
+You can use the ISO to:
+
+- Boot a virtual machine (e.g. VirtualBox, QEMU)
+- Create a bootable live USB (using BalenaEtcher, Rufus, etc)(try without installing)
+- Install the system on any PC 
+- Give us an open source, consistent, customisable, ready-to-go Linux environment for the d2i team
+
 
 
 ## What It Includes

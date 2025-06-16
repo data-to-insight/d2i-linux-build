@@ -1,6 +1,6 @@
-# D2I Linux Alpha Build (v0.0.9)
+# D2I Linux Alpha Build (v0.1.0)
 
-Custom Ubuntu-based ISO for internal D2I tooling and testing. This is an early attempt to streamline deployment and testing of a desktop environment preconfigured for common D2I workflows.
+Custom Ubuntu-based ISO for internal D2I tooling and testing. This is an early attempt to streamline deployment and testing of a desktop environment preconfigured for common D2I workflows. This is now a working build from release v0.1.0, see link below for latest release. 
 
 ## What Is This?
 

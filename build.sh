@@ -5,7 +5,7 @@ mkdir -p output
 
 lb clean --purge || true
 
-lb config \
+sudo lb config \
   --distribution noble \
   --architectures amd64 \
   --debian-installer live \
@@ -13,7 +13,9 @@ lb config \
   --mirror-bootstrap http://archive.ubuntu.com/ubuntu/ \
   --mirror-chroot http://archive.ubuntu.com/ubuntu/ \
   --mirror-chroot-security http://security.ubuntu.com/ubuntu/ \
-  --linux-flavours amd64
+  --linux-flavours amd64 \
+  --chroot false
+
 
 mkdir -p config/package-lists config/hooks config/includes.chroot/etc/xdg/xfce4/xfconf/xfce-perchannel-xml
 

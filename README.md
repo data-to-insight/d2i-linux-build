@@ -80,3 +80,12 @@ sudo ./build.sh
 cd /workspaces/d2i_linux_build
 chmod +x build_in_tmp.sh
 ./build_in_tmp.sh
+
+
+docker build -t d2i-live .
+docker run --rm -v "$PWD/output:/build/output" d2i-live
+
+problems occur round trying to mount and /proc
+mount: /build/chroot/proc: permission denied
+mount: /build/chroot/dev/pts: permission denied
+

@@ -1,15 +1,8 @@
 FROM ubuntu:24.04
 
-RUN apt-get update && apt-get install -y \
-  live-build \
-  wget \
-  curl \
-  rsync \
-  sudo \
-  git \
-  xz-utils
+RUN apt update && apt install -y live-build wget curl rsync xz-utils
 
-COPY . /build
 WORKDIR /build
+COPY . /build
 
 RUN chmod +x build.sh && ./build.sh

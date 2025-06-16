@@ -2,6 +2,7 @@
 
 Custom Debian-based ISO for internal D2I tooling and testing. Jusst an initial attempt to get this off the ground in case anyone wants to give it a go - any suggestions obv welcome. Aside the below it's fairly bare bones for now with a bit of obv d2i customisation and some of the core apps we're likely to have in use. 
 
+Notes: At the moment this is an in progress, non-functional dev workflow. 14/06/25
 ---
 
 ### Base

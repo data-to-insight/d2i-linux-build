@@ -1,34 +1,26 @@
-name: Build and Release ISO
+name: Build ISO
 
 on:
   push:
-    branches: [main]
-
-permissions:
-  contents: write  # Required for release upload
+    branches: [ main ]
 
 jobs:
-  build:
+  build-iso:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Set up build environment
-        run: |
-          sudo apt update
-          sudo apt install -y live-build xorriso
+    - name: Build ISO using Docker
+      run: |
+        docker build -t d2i-iso-builder .
+        mkdir -p output
+        docker run --rm -v ${{ github.workspace }}/output:/build/output d2i-iso-builder
 
-      - name: Run ISO build script
-        run: |
-          chmod +x build.sh
-          ./build.sh
-
-      - name: Upload ISO to GitHub Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: "v1.0.${{ github.run_number }}"
-          name: "d2i-custom ISO build ${{ github.run_number }}"
-          files: output/d2i-custom.iso
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload ISO to GitHub Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: output/*.iso
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

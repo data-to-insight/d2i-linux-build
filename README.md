@@ -24,6 +24,22 @@ ISO file can:
 
 4. Use in live Mode (no changes saved) or install to disk for full access
 
+### Downloading the ISO
+
+latest D2I Linux ISO is at:
+
+[Download D2I Linux v0.1.0](https://github.com/data-to-insight/d2i_linux_build/releases/tag/v0.1.0)
+
+Note:
+ISO file located **inside source archive** (either ZIP or TAR.GZ) and is not shown as separate file.
+
+To extract ISO:
+
+1. Download the ZIP or TAR.GZ file from release
+2. Extract it on your pc
+3. Locate ISO at `output/d2i-custom.iso` inside extracted folder
+4. You can boot this ISO in VirtualBox, write it to USB with BalenaEtcher, or install it on pc
+
 
 ## What It Includes
 

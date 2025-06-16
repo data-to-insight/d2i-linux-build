@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-desktop" version="1.0">
+  <property name="backdrop">
+    <property name="screen0">
+      <property name="monitor0">
+        <property name="image-path" type="string" value="/usr/share/backgrounds/d2i_wallpaper.png"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/d2i_wallpaper.png"/>
+      </property>
+    </property>
+  </property>
+</channel>

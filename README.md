@@ -24,36 +24,40 @@ repo contains:
 
 ## Preinstalled Apps
 
-| Application     | Purpose                                                             |
-|-----------------|----------------------------------------------------------------------|
-| **Firefox**     | Web browser (homepage: [datatoinsight.org](https://www.datatoinsight.org)) |
-| **LibreOffice** | Office suite                                                         |
-| **Slack**       | Team communications                                                  |
-| **Thunderbird** | Email client                                                         |
-| **Anaconda**    | Python environment + Jupyter                                         |
-| **Zenity**      | GUI dialog tool for scripts                                          |
-| **curl, wget, git** | CLI tools                                                        |
+| Application     | Purpose                                                                 |
+|-----------------|--------------------------------------------------------------------------|
+| **Firefox ESR** | Web browser, homepage set to https://www.datatoinsight.org              |
+| **LibreOffice** | Office suite (Calc used for spreadsheets)                               |
+| **Slack**       | Team communication (installed via `.deb`)                               |
+| **Thunderbird** | Email client                                                            |
+| **Anaconda**    | Python data environment, includes Jupyter (installed via custom script) |
+| **Zenity**      | Simple GUI dialogs for scripts                                           |
+| **curl, wget, git** | Core CLI tools for dev and data use                                 |
 
 ---
 
 ## D2I Custom
 
-- **Wallpaper**: Pale white with D2I logo (top-left)
-- **Firefox Homepage**: [https://www.datatoinsight.org](https://www.datatoinsight.org)
-- **Welcome Message**: _"Your new D2I build has installed."_
-- **Autostart**: Slack, Thunderbird
-- **User**: `d2iuser` (auto-login in live mode)
+| Feature                     | Description                                                                 |
+|-----------------------------|-----------------------------------------------------------------------------|
+| **Wallpaper**              | Custom D2I wallpaper (`d2i-wallpaper.png`) in `/usr/share/backgrounds/`     |
+| **Welcome Message**        | First login popup: “Your new D2I build has installed.”                      |
+| **Autostart Apps**         | Slack and Thunderbird autostart on live boot or first login                 |
+| **Firefox Homepage**       | Set to https://www.datatoinsight.org                                       |
+| **Live Session Autologin** | User `d2iuser` is logged in automatically in the live session                |
 
 ---
 
 ## First Boot
 
-- XFCE desktop
-- D2I-branded wallpaper
-- Slack and Thunderbird start automatically
-- Firefox opens to homepage
-- Welcome notification
-- LibreOffice visible in app menu
+When run via VirtualBox, QEMU, or direct install, the following should be visible:
+
+- XFCE GUI with D2I wallpaper
+- App menu incl Firefox, LibreOffice, Slack, Thunderbird
+- Slack and Thunderbird autostart
+- D2I welcome popup on first boot
+- Firefox opens https://www.datatoinsight.org
+
 
 ---
 
@@ -110,14 +114,27 @@ You can also find it via:
 
 d2i_linux_build/
 │
-├── build.sh # used inside container
-├── Dockerfile # wrapper for live-build
-├── config/ # live-build config (hooks, includes)
-├── assets/ # D2I desktop, etc.
-├── output/ # ISO here
-└── .github/workflows/ # GitActions auto stuff
+├── build.sh                      # ISO build driver script (invokes live-build)
+├── Dockerfile                    # Docker wrapper for privileged runtime
+├── config/
+│   ├── package-lists/            # apt packages to include (e.g. d2i.list.chroot)
+│   ├── includes.chroot/          # Files to copy into final image (e.g. wallpaper)
+│   └── hooks/                    # Custom install logic (e.g. Anaconda installer)
+├── assets/                       # Wallpaper image, etc
+├── output/                       # Built ISO is placed here
+└── .github/workflows/            # GitHub Actions pipeline (future automation)
 
-### 🧩 Next Steps
+
+### Customised layering
+
+| Layer              | Purpose                                                 |
+|--------------------|---------------------------------------------------------|
+| package-lists/     | Declare core packages installed via apt           |
+| includes.chroot/   | Add files into ISO directly (e.g. wallpapers, configs) |
+| hooks/             | Custom shell scripts run during the chroot phase   |
+
+
+### Next Steps
 
 - tbc
 

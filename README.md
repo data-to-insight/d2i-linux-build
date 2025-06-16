@@ -134,6 +134,15 @@ d2i_linux_build/
 | hooks/             | Custom shell scripts run during the chroot phase   |
 
 
+### Releasing new iso ver
+
+Publish new iso release:
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+
+
 ### Next Steps
 
 - tbc

@@ -28,7 +28,7 @@ wget
 git
 EOF
 
-cat <<EOF > config/hooks/0100-wallpaper.chroot
+cat <<EOF > config/hooks/0100-wallpaper.binary
 #!/bin/bash
 set -e
 mkdir -p /usr/share/backgrounds

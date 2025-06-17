@@ -64,6 +64,29 @@ You can use the ISO to:
 
 ---
 
+## Data Science Environment
+
+D2I Linux build includes Python tools. Access via a post-install hook using `pip` inside the Anaconda environment. Anaconda is preinstalled in `/opt/anaconda3` and added to the system PATH. To start working with notebooks `jupyter notebook`(this opens the browser as per ESCC current set up)
+
+### Preinstalled Python Packages
+
+| Package         | Purpose                                  |
+|-----------------|------------------------------------------|
+| `pandas`        | Data manipulation and analysis           |
+| `numpy`         | Numerical ops                            |
+| `matplotlib`    | Plots and visualisation                  |
+| `seaborn`       | Statistical visuals                      |
+| `openpyxl`      | Excel file reading/writing (xlsx)        |
+| `scikit-learn`  | Machine learning tools                   |
+| `statsmodels`   | Stats modelling and tests                |
+| `jupyter`       | Notebooks for data workflows             |
+
+
+Available by default via `python` or `jupyter notebook` from terminal or XFCE menu.
+
+
+---
+
 ## D2I Custom
 
 | Feature                     | Description                                                                 |
@@ -184,20 +207,20 @@ To better support our work with LA's and data teams, aiming to also add/apply:
   - Preinstall Git Desktop for easier repo access
   - Preconfig Git with d2i GitHub settings or links
 
-- **Data Science Stack**
+- **Data Science Stack** [done]
   - maybe also have R and RStudio
   - Python packages for data science:
     - pandas, numpy, matplotlib, seaborn, openpyxl, scikit-learn, statsmodels
   - Add VS Code (preconfig - Python and R extensions)
 
-- **Office & Font Support**
+- **Office & Font Support** [done]
   - MS core fonts for compatibility with shared reports for better doc rendering in LibreOffice
 
-- **Database Tools**
+- **Database Tools** 
   - Possible PostgreSQL client (to mimiic Eclipse and other such db users)
-  - Include SQLite CLI and browser
+  - Include SQLite CLI and browser 
 
-- **D2I Internal Resources**
+- **D2I Internal Resources** [done]
   - Add a `/home/d2iuser/D2I` folder with:
     - Shortcuts to shared network drives (might be possible)
     - Base data folders for getting started

@@ -175,9 +175,47 @@ git tag v0.1.0
 git push origin v0.1.0
 
 
-### Next Steps
 
-- tbc
+### To do, - Future Improvements
+
+To better support our work with LA's and data teams, aiming to also add/apply:
+
+- **Git and Git Tools**[done]
+  - Preinstall Git Desktop for easier repo access
+  - Preconfig Git with d2i GitHub settings or links
+
+- **Data Science Stack**
+  - maybe also have R and RStudio
+  - Python packages for data science:
+    - pandas, numpy, matplotlib, seaborn, openpyxl, scikit-learn, statsmodels
+  - Add VS Code (preconfig - Python and R extensions)
+
+- **Office & Font Support**
+  - MS core fonts for compatibility with shared reports for better doc rendering in LibreOffice
+
+- **Database Tools**
+  - Possible PostgreSQL client (to mimiic Eclipse and other such db users)
+  - Include SQLite CLI and browser
+
+- **D2I Internal Resources**
+  - Add a `/home/d2iuser/D2I` folder with:
+    - Shortcuts to shared network drives (might be possible)
+    - Base data folders for getting started
+
+- **Offline Docs**
+  - Bundle static version of D2I Documentation site:  
+    [https://data-to-insight.github.io/Documentation/](https://data-to-insight.github.io/Documentation/)
+  - Add shortcut to open docs from desktop
+
+- **Visual Enhancements**
+  - I've only added a placeholder wallpaper and branding so far
+  - Tweak XFCE theme to reflect D2I
+
+- **GitHub Integration**
+  - Set links and easy launcher to our main GitHub:  
+    [https://github.com/data-to-insight/](https://github.com/data-to-insight/)
+
+Aims to reduce onboarding time, increase offline usability, + ready-to-go tooling for both our d2i typical tech stack.
 
 
 

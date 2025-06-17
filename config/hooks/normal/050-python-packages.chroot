@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo "Installing Python data science packages..."
+
+pip3 install \
+  pandas \
+  numpy \
+  matplotlib \
+  seaborn \
+  openpyxl \
+  scikit-learn \
+  statsmodels

@@ -6,3 +6,42 @@ wget
 git
 thunderbird
 zenity
+
+# Core development tools
+git
+gh
+
+# Office compatibility
+ttf-mscorefonts-installer
+
+# Data sci libraries (Python)
+python3-pandas
+python3-numpy
+python3-matplotlib
+python3-seaborn
+python3-openpyxl
+python3-sklearn
+python3-statsmodels
+
+# so not dependent on just Anaconda
+python3
+python3-pip
+python3-venv
+
+# db tools
+sqlite3
+sqlitebrowser
+unixodbc
+odbcinst
+gnome-sql
+
+
+# vs code and related
+code
+code-oss
+
+# ODBC packages and GUI client
+# unixODBC core system and config tools + gnome-sql graphical SQL frontend
+unixodbc
+odbcinst
+gnome-sql

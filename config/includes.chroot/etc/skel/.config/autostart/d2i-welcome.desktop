@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=D2I Welcome Message
+Exec=/usr/local/bin/d2i-welcome.sh
+Terminal=false

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=JupyterLab
+Comment=Launch JupyterLab in browser
+Exec=jupyter-lab --no-browser
+Icon=utilities-terminal
+Terminal=true
+Type=Application

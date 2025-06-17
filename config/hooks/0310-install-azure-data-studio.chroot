@@ -1,0 +1,7 @@
+#!/bin/bash
+set -e
+
+echo "Installing Azure Data Studio..."
+
+wget -O /tmp/azuredatastudio.deb https://go.microsoft.com/fwlink/?linkid=2214176
+apt install -y /tmp/azuredatastudio.deb || true  # allow it to continue even if missing deps

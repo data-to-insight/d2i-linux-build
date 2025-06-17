@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Open D2I Data Workspace
+Type=Application
+Exec=code-oss ~/Documents/D2I-Data
+Icon=utilities-terminal

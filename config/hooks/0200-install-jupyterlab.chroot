@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+echo "Installing JupyterLab..."
+pip3 install --no-cache-dir jupyterlab

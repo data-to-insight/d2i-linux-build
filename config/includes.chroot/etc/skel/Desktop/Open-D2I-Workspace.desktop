@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Open D2I Workspace
+Type=Application
+Exec=code ~/Documents/D2I-Data
+Icon=code
+Terminal=false

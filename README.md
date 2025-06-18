@@ -1,16 +1,104 @@
 # D2I Linux Alpha Build (v0.1.0)
 
-Custom Ubuntu-based ISO for internal D2I tooling and testing. This is an early attempt to build, streamline deployment and test a Linux desktop environment preconfigured with key apps for our D2I workflows straight out of the box. 
-**This is now a working build from release v0.1.0**, see link below for latest release. 
+Ubuntu-based ISO for D2I tooling and testing. This is an early attempt to build, deploy(to anyone who'd like to try it) and test a Linux desktop environment preconfigured with key apps towards a data-orientated workflow(incl. D2I's) straight out of the box. An exploratory and very much in-progress investigation into what a D2I open source plug-and-play data-suite might look like for our own team but also any LA data colleagues. 
 
+**This is now a working build from release v0.1.0**
+See below for download and usage instructions.
 
+---
 
-## Quick how to
+## Why Build a Custom Linux ISO for D2I?
+
+Across lots of sectors teams like ours are increasingly exploring more sustainable, cost-effective and open approaches to tooling. This Linux build reflects that shift. We're asking ourselves, can we:
+
+- Put together a free, open-source alternative for D2I use and potentially local authority (data)colleagues
+- Package key D2I tools in a ready-to-use format (ideally that will run on any hardware)
+- Make it easier for colleagues to try, adopt, (enjoy?) and understand **open-source tools** like Python, Anaconda, Jupyter, and LibreOffice
+- Encourage **open standards**, **data transparency**, and **independence from software lock-in**
+
+---
+
+## Common Open Source Benefits
+
+- **Cost saving**: No licence fees or platform lock-in  
+- **Transparency**: Code and tools can be audited and understood  
+- **Security**: Community-tested, widely deployed systems  
+- **Portability**: Run on almost any hardware  
+- **Adaptability**: Customise, rebuild and redistribute legally  
+- **Shared knowledge**: Aligns with our principles of collaboration and insight-sharing  
+
+Some public teams are already taking steps to switch away from proprietary platforms, e.g.:
+
+- [“We’re done with Teams” — German state uninstalls Microsoft tools](https://economictimes.indiatimes.com/tech/technology/were-done-with-teams-german-state-hits-uninstall-on-microsoft/articleshow/121817207.cms)
+- [Denmark exploring open source alternatives to Microsoft](https://cybernews.com/tech/denmark-open-source-software-phase-microsoft/)
+
+By offering a Linux-based, D2I-ready environment, we provide a small but practical step toward possible wider open adoption — while also improving our own portability and resilience. We're learning by doing on this one; but there is potential future value in putting together an in-one desktop solution for both D2I or local authority use.
+
+---
+
+## How to (Quick view)
 
 1. Download latest release/ver (see below for intructions about *Downloading ISO*)
 2. Write ISO file to usb stick using a tool like [Rufus](https://rufus.ie), [Etcher](https://www.balena.io/etcher/) or `dd` command
 3. Boot PC or virtual machine from usb or ISO file
 4. Use in live Mode (no changes saved) or install to disk for full access
+
+---
+
+## How to (Expanded view)
+
+This guide helps you run D2I Linux build from USB stick in **Live Mode** (i.e. try it without installing).
+
+## 1. Download the ISO
+
+Go to the [Latest Release](https://github.com/data-to-insight/d2i_linux_build/releases/latest) and download the ZIP or TAR.GZ file.  
+Inside you'll find the ISO file (e.g. `d2i-custom.iso`)
+
+Unzip or extract it so you can access the `.iso` file directly.
+
+---
+
+## 2. Write the ISO to a USB stick
+
+Choose one of the following methods:
+
+### Option A: Use a graphical tool (recommended for beginners)
+- [Rufus](https://rufus.ie) (Windows)  
+- [Balena Etcher](https://www.balena.io/etcher/) (Windows, macOS, Linux)
+
+**Steps**:
+1. Plug in a USB stick (at least 4GB)
+2. Open the tool and select your ISO file
+3. Choose USB device
+4. Click "Flash" or "Start" to write
+
+### Option B: Use `dd` command (Linux/macOS only - advanced)
+
+    sudo dd if=d2i-custom.iso of=/dev/sdX bs=4M status=progress && sync
+
+Replace `/dev/sdX` with the correct USB device name (be very careful – will erase the disk).
+
+---
+
+## 3. Boot from the USB
+
+1. Insert the USB stick into the target machine.
+2. Reboot and enter BIOS/boot menu (usually by pressing F12, F2, ESC, or DEL).
+3. Select your USB stick as the boot device.
+
+---
+
+## 4. Use D2I Linux
+
+You’ll be offered:
+- **Live Mode**: Try the system without making changes to your computer (ideal for testing)
+- **Install Mode**: Permanently install the system on a hard drive (for full-time use)
+
+
+
+---
+
+
 
 ### Downloading ISO
 
@@ -37,30 +125,32 @@ You can use the ISO to:
 
 
 
-## What It Includes
+## What the build/software includes
 
 - Ubuntu 24.04 LTS (Noble Numbat) base
 - XFCE desktop environment (fast/ minimal 
 - **Live Mode**: XFCE GUI with auto-login (`d2iuser`) on initial use)
-- D2I custom wallpaper (placeholder only atm)
-- Slack and Thunderbird auto-start on boot
-- Firefox homepage set to https://www.datatoinsight.org
-- Anaconda, Jupyter, LibreOffice + common tools preinstalled
-
+- D2I wallpaper (placeholder atm)
 
 ---
 
-## Preinstalled Apps
+### Preinstalled Apps
 
-| Application     | Purpose                                                                 |
-|-----------------|--------------------------------------------------------------------------|
-| **Firefox ESR** | Web browser, homepage set to https://www.datatoinsight.org              |
-| **LibreOffice** | Office suite (Calc used for spreadsheets)                               |
-| **Slack**       | Team communication (installed via `.deb`)                               |
-| **Thunderbird** | Email client                                                            |
-| **Anaconda**    | Python data environment, includes Jupyter (installed via custom script) |
-| **Zenity**      | Simple GUI dialogs for scripts                                           |
-| **curl, wget, git** | Core CLI tools for dev and data use                                 |
+
+| Application         | Purpose                                                                 |
+|---------------------|-------------------------------------------------------------------------|
+| **Firefox ESR**      | Web browser, homepage set to https://www.datatoinsight.org             |
+| **LibreOffice**      | Office suite (Calc used for spreadsheets)                              |
+| **Slack**            | Team communication (installed via `.deb`)                              |
+| **Thunderbird**      | Email client                                                           |
+| **Anaconda**         | Python data environment, includes Jupyter (installed via custom script)|
+| **Zenity**           | Simple GUI dialogs for scripts                                          |
+| **curl, wget, git**  | Core CLI tools for dev and data use                                    |
+| **Element (Matrix)** | Decentralised chat app, alternative to Teams or Slack                  |
+| **OpenVPN Support**  | VPN client support via NetworkManager plugins  
+                        ([setup guide](https://wiki.gnome.org/Projects/NetworkManager/VPN))     |
+
+
 
 ---
 
@@ -112,7 +202,7 @@ When run via VirtualBox, QEMU, or direct install, you should see:
 
 ---
 
-## Build Process
+## Build Process and Learning 
 
 ### Final Working Method (Dockerised)
 
@@ -121,7 +211,7 @@ Succeeded by **moving `lb build` command outside Docker image build phase** and 
 ```bash
 docker build -t d2i-live .
 docker run --rm -v "$PWD/output:/build/output" d2i-live
-
+```
 
 ---
 
@@ -140,128 +230,10 @@ This avoids mounting of privileged paths like `/proc` and `/dev/pts` inside Dock
 
 ---
 
-## Build Locally
-
-```bash
-# Build image
-docker build -t d2i-live .
-
-# Run image to build ISO
-docker run --rm -v "$PWD/output:/build/output" d2i-live
-
 
 ## Download for use our latest iso release
 
 [Latest Release](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
 
 
-### Output
 
-ISO will appear in:
-
-./output/d2i-custom.iso
-
-You can also find it via:
-
-[Latest Release](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
-
-### Proj Structure
-
-d2i_linux_build/
-│
-├── build.sh                      # ISO build driver script (invokes live-build)
-├── Dockerfile                    # Docker wrapper for privileged runtime
-├── config/
-│   ├── package-lists/            # apt packages to include (e.g. d2i.list.chroot)
-│   ├── includes.chroot/          # Files to copy into final image (e.g. wallpaper)
-│   └── hooks/                    # Custom install logic (e.g. Anaconda installer)
-├── assets/                       # Wallpaper image, etc
-├── output/                       # Built ISO is placed here
-└── .github/workflows/            # GitHub Actions pipeline (future automation)
-
-
-### Customised layering
-
-| Layer              | Purpose                                                 |
-|--------------------|---------------------------------------------------------|
-| package-lists/     | Declare core packages installed via apt           |
-| includes.chroot/   | Add files into ISO directly (e.g. wallpapers, configs) |
-| hooks/             | Custom shell scripts run during chroot phase   |
-
-
-### Releasing new iso ver
-
-Publish new iso release:
-
-```bash
-git tag v0.1.0
-git push origin v0.1.0
-
-
-
-### To do, - Future Improvements
-
-To better support our work with LA's and data teams, aiming to also add/apply:
-
-- **Git and Git Tools**[done]
-  - Preinstall Git Desktop for easier repo access
-  - Preconfig Git with d2i GitHub settings or links
-
-- **Data Science Stack** [done]
-  - maybe also have R and RStudio
-  - Python packages for data science:
-    - pandas, numpy, matplotlib, seaborn, openpyxl, scikit-learn, statsmodels
-  - Add VS Code (preconfig - Python and R extensions)
-
-- **Office & Font Support** [done]
-  - MS core fonts for compatibility with shared reports for better doc rendering in LibreOffice
-
-- **Database Tools** 
-  - Possible PostgreSQL client (to mimiic Eclipse and other such db users)
-  - Include SQLite CLI and browser 
-
-- **D2I Internal Resources** [done]
-  - Add a `/home/d2iuser/D2I` folder with:
-    - Shortcuts to shared network drives (might be possible)
-    - Base data folders for getting started
-
-- **Offline Docs**
-  - Bundle static version of D2I Documentation site:  
-    [https://data-to-insight.github.io/Documentation/](https://data-to-insight.github.io/Documentation/)
-  - Add shortcut to open docs from desktop
-
-- **Visual Enhancements**
-  - I've only added a placeholder wallpaper and branding so far
-  - Tweak XFCE theme to reflect D2I
-
-- **GitHub Integration**
-  - Set links and easy launcher to our main GitHub:  
-    [https://github.com/data-to-insight/](https://github.com/data-to-insight/)
-
-Aims to reduce onboarding time, increase offline usability, + ready-to-go tooling for both our d2i typical tech stack.
-
-
-
-## Internal Dev notes
-
-cd /tmp/d2ibuild
-sudo ./build.sh
-
-**Need to biuld into /tmp**
-cd /workspaces/d2i_linux_build
-chmod +x build_in_tmp.sh
-./build_in_tmp.sh
-
-
-docker build -t d2i-live .
-docker run --rm -v "$PWD/output:/build/output" d2i-live
-
-problems occur round trying to mount and /proc
-mount: /build/chroot/proc: permission denied
-mount: /build/chroot/dev/pts: permission denied
-
-
-
-**To build**
-docker build -t d2i-live .
-docker run --rm -it   --privileged   -v "$PWD/output":/build/output   d2i-live   bash -c "./build.sh && lb build && mv live-image-amd64.hybrid.iso output/d2i-custom.iso"

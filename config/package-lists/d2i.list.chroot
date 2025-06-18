@@ -7,6 +7,9 @@ git
 thunderbird
 zenity
 
+# os team chat, decentralised, incl bridges to Slack/MS Teams
+element-desktop
+
 # Core development tools
 git
 gh
@@ -45,3 +48,7 @@ code-oss
 unixodbc
 odbcinst
 gnome-sql
+
+# GNOME NetworkManager OpenVPN plugin
+network-manager-openvpn
+network-manager-openvpn-gnome

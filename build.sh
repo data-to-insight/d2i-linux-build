@@ -26,4 +26,10 @@ libreoffice
 curl
 wget
 git
+zenity
+thunderbird
+element-desktop
+slack-desktop  # Installed via hook
+network-manager-openvpn
+network-manager-openvpn-gnome
 EOF

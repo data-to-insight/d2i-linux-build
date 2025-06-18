@@ -107,7 +107,7 @@ ISO will appear in:
 
 You can also find it via:
 
-[Latest Release](https://github.com/datatoinsight/d2i-linux_build/releases/latest)
+[Latest Release](https://github.com/data-to-insight/d2i_linux_build/releases)
 
 ### Proj Structure
 
